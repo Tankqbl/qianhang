@@ -1,26 +1,26 @@
 const $siteList = $('.siteList')
 const $lastLi = $siteList.find('li.last')
-console.log($lastLi)
+const $img = $lastLi.find('li.site.logo.img')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
-const hashMap = xObject || [
+const hashMap = [
     {
-        logo: 'F', logoType: 'text', url: 'https://www.figma.com/', briefIntroduction: '一款前端所见即所得的设计工具',
+        logo: 'https://www.figma.com/favicon.ico', logoType: 'text', url: 'https://www.figma.com/', briefIntroduction: '一款前端所见即所得的设计工具',
     },
     {
-        logo: 'L', logoType: 'text', url: 'https://www.liaoxuefeng.com/', briefIntroduction: '有助于新手学习',
+        logo: 'https://www.liaoxuefeng.com/favicon.ico', logoType: 'text', url: 'https://www.liaoxuefeng.com/', briefIntroduction: '有助于新手学习',
     },
     {
-        logo: 'C', logoType: 'image', url: 'https://blog.codepen.io/', briefIntroduction: 'share your world',
+        logo: 'https://blog.codepen.io/favicon.ico', logoType: 'image', url: 'https://blog.codepen.io/', briefIntroduction: 'share your world',
     },
     {
-        logo: 'C', logoType: 'image', url: 'https://www.codecademy.cn/', briefIntroduction: '海量在线编辑习题和课程视频',
+        logo: 'https://www.codecademy.cn/favicon.ico', logoType: 'image', url: 'https://www.codecademy.cn/', briefIntroduction: '海量在线编辑习题和课程视频',
     },
     {
-        logo: 'M', logoType: 'image', url: 'https://www.icourse163.org/', briefIntroduction: '升级你的知识库',
+        logo: 'https://www.icourse163.org/favicon.ico', logoType: 'image', url: 'https://www.icourse163.org/', briefIntroduction: '升级你的知识库',
     },
     {
-        logo: 'Hgit', logoType: 'image', url: 'https://huaban.com/', briefIntroduction: '发现设计灵感',
+        logo: 'https://huaban.com/favicon.ico', logoType: 'image', url: 'https://huaban.com/', briefIntroduction: '发现设计灵感',
     },
 ]
 const simplifyUrl = (url) => {
@@ -32,9 +32,12 @@ const simplifyUrl = (url) => {
 const render = () => {
     $siteList.find('li:not(.last)').remove()
     hashMap.forEach((node, index) => {
+        if (!node.logo) {
+            node.logo = simplifyUrl(node.logo)[0].toUpperCase()
+        }
         const $li = $(`<li>
         <div class="site">
-          <div class="logo">${node.logo[0]}</div>
+        <div class="logo"><img src="${node.logo}" class='img' /></div>
           <div class="link">${simplifyUrl(node.url)}</div>
           <div class="briefIntroduction">${node.briefIntroduction}</div>
           <div class="close">
@@ -66,7 +69,6 @@ $('.addButton')
             logoType: 'text',
             url: url,
             briefIntroduction: briefIntroduction,
-            logo: simplifyUrl(url)[0].toUpperCase(),
         })
         render()
         console.log(hashMap)
@@ -84,4 +86,7 @@ $(document).on('keypress', (e) => {
             window.open(hashMap[i].url)
         }
     }
+})
+$img.on('error', () => {
+
 })

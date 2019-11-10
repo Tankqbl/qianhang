@@ -134,22 +134,22 @@ var hashMap = xObject || [{
   url: 'https://www.liaoxuefeng.com/',
   briefIntroduction: '有助于新手学习'
 }, {
-  logo: '/image/codepen.jpg',
+  logo: 'C',
   logoType: 'image',
   url: 'https://blog.codepen.io/',
   briefIntroduction: 'share your world'
 }, {
-  logo: '/image/code.jpg',
+  logo: 'C',
   logoType: 'image',
   url: 'https://www.codecademy.cn/',
   briefIntroduction: '海量在线编辑习题和课程视频'
 }, {
-  logo: '/image/muke.jpg',
+  logo: 'M',
   logoType: 'image',
   url: 'https://www.icourse163.org/',
   briefIntroduction: '升级你的知识库'
 }, {
-  logo: '/image/huaban.jpg',
+  logo: 'Hgit',
   logoType: 'image',
   url: 'https://huaban.com/',
   briefIntroduction: '发现设计灵感'
@@ -211,4 +211,4 @@ $(document).on('keypress', function (e) {
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.f88bf697.js.map
+//# sourceMappingURL=main.dbd871ab.js.map
