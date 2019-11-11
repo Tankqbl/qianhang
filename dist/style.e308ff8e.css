@@ -163,6 +163,7 @@ img{
 .siteList .addButton .icon {
     width: 64px;
     height: 64px;
+    margin-top:3px;
 }
 .siteList .addButton .icon-wrapper{
     display: flex;
