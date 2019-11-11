@@ -152,6 +152,7 @@ img{
     border: 1px solid #DDD;
     background: white;
     width: 160px;
+    height: 151px;
     display: flex;
     justify-content: center;
     align-items: center;
