@@ -120,38 +120,38 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"main.js":[function(require,module,exports) {
 var $siteList = $('.siteList');
 var $lastLi = $siteList.find('li.last');
-var $img = $lastLi.find('li.site.logo.img');
+var $img = $siteList.find('li.site.logo.img');
 var x = localStorage.getItem('x');
 var xObject = JSON.parse(x);
 var hashMap = [{
   logo: 'https://www.figma.com/favicon.ico',
   logoType: 'text',
-  url: 'https://www.figma.com/',
+  url: 'https://www.figma.com',
   briefIntroduction: '一款前端所见即所得的设计工具'
 }, {
   logo: 'https://www.liaoxuefeng.com/favicon.ico',
   logoType: 'text',
-  url: 'https://www.liaoxuefeng.com/',
+  url: 'https://www.liaoxuefeng.com',
   briefIntroduction: '有助于新手学习'
 }, {
   logo: 'https://blog.codepen.io/favicon.ico',
   logoType: 'image',
-  url: 'https://blog.codepen.io/',
+  url: 'https://blog.codepen.io',
   briefIntroduction: 'share your world'
 }, {
   logo: 'https://www.codecademy.cn/favicon.ico',
   logoType: 'image',
-  url: 'https://www.codecademy.cn/',
+  url: 'https://www.codecademy.cn',
   briefIntroduction: '海量在线编辑习题和课程视频'
 }, {
   logo: 'https://www.icourse163.org/favicon.ico',
   logoType: 'image',
-  url: 'https://www.icourse163.org/',
+  url: 'https://www.icourse163.org',
   briefIntroduction: '升级你的知识库'
 }, {
   logo: 'https://huaban.com/favicon.ico',
   logoType: 'image',
-  url: 'https://huaban.com/',
+  url: 'https://huaban.com',
   briefIntroduction: '发现设计灵感'
 }];
 
@@ -159,14 +159,28 @@ var simplifyUrl = function simplifyUrl(url) {
   return url.replace('https://', '').replace('http://', '').replace('www.', '').replace(/\/.*/, ''); // 删除 / 开头的内容
 };
 
+var logoUrl = function logoUrl(url) {
+  return url + '/favicon.ico';
+};
+
+var noFindLogo = 'https://i.loli.net/2019/11/11/27QtaBEFrhVTbyU.png';
+
+var noFind = function noFind() {
+  var img = event.srcElement;
+  img.src = "https://i.loli.net/2019/11/11/27QtaBEFrhVTbyU.png";
+  img.onerror = null;
+};
+
+function notimgfound(obj) {
+  obj.onerror = "";
+  obj.src = "images/logoimgerror.png";
+  obj.onerror = null; //解绑onerror事件
+}
+
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
   hashMap.forEach(function (node, index) {
-    if (!node.logo) {
-      node.logo = simplifyUrl(node.logo)[0].toUpperCase();
-    }
-
-    var $li = $("<li>\n        <div class=\"site\">\n        <div class=\"logo\"><img src=\"".concat(node.logo, "\" class='img' /></div>\n          <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n          <div class=\"briefIntroduction\">").concat(node.briefIntroduction, "</div>\n          <div class=\"close\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-shanchu\"></use>\n            </svg>\n          </div>\n        </div>\n      </li>")).insertBefore($lastLi);
+    var $li = $("<li>\n        <div class=\"site\">\n        <div class=\"logo\"><img src=\"".concat(logoUrl(node.url), "\" class='img'  \u03BFnerr\u03BFr=\"javascript:this.src='https://i.loli.net/2019/11/11/27QtaBEFrhVTbyU.png'\";/></div>\n          <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n          <div class=\"briefIntroduction\">").concat(node.briefIntroduction, "</div>\n          <div class=\"close\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-shanchu\"></use>\n            </svg>\n          </div>\n        </div>\n      </li>")).insertBefore($lastLi);
     $li.on('click', function () {
       window.open(node.url);
     }); //用来代替A标签
@@ -195,7 +209,6 @@ $('.addButton').on('click', function () {
     briefIntroduction: briefIntroduction
   });
   render();
-  console.log(hashMap);
 });
 
 window.onbeforeunload = function () {
@@ -205,7 +218,6 @@ window.onbeforeunload = function () {
 
 $(document).on('keypress', function (e) {
   var key = e.key;
-  console.log(key);
 
   for (i = 0; i < hashMap.length; i++) {
     if (hashMap[i].logo.toLowerCase() === key) {
@@ -213,7 +225,6 @@ $(document).on('keypress', function (e) {
     }
   }
 });
-$img.on('error', function () {});
 },{}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -242,7 +253,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55331" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60270" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
