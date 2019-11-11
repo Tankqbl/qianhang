@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# qianhang
-# nav-2
-=======
+
 # 开发
 ```
 yarn global add parcel-bundler
