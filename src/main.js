@@ -3,7 +3,7 @@ const $lastLi = $siteList.find('li.last')
 const $img = $siteList.find('li.site.logo.img')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
-const hashMap = [
+const hashMap = xObject || [
     {
         logo: 'https://www.figma.com/favicon.ico', logoType: 'text', url: 'https://www.figma.com', briefIntroduction: '一款前端所见即所得的设计工具',
     },
@@ -69,9 +69,13 @@ const render = () => {
             e.stopPropagation() // 阻止冒泡
             hashMap.splice(index, 1)
             render()
+            location.reload()
         })
     })
 }
+
+
+
 render()
 $('.addButton')
     .on('click', () => {
@@ -81,11 +85,11 @@ $('.addButton')
             url = 'https://' + url
         }
         hashMap.push({
-            logoType: 'text',
             url: url,
             briefIntroduction: briefIntroduction,
         })
         render()
+        location.reload()
     })
 
 window.onbeforeunload = () => {
@@ -99,5 +103,10 @@ $(document).on('keypress', (e) => {
             window.open(hashMap[i].url)
         }
     }
+    location.reload()
 })
 
+
+$("img").on('error', function () {
+    $(this).attr('src', 'https://i.loli.net/2019/11/11/JfNTZXMB8hxQHlP.png')
+})

@@ -123,7 +123,7 @@ var $lastLi = $siteList.find('li.last');
 var $img = $siteList.find('li.site.logo.img');
 var x = localStorage.getItem('x');
 var xObject = JSON.parse(x);
-var hashMap = [{
+var hashMap = xObject || [{
   logo: 'https://www.figma.com/favicon.ico',
   logoType: 'text',
   url: 'https://www.figma.com',
@@ -190,6 +190,7 @@ var render = function render() {
 
       hashMap.splice(index, 1);
       render();
+      location.reload();
     });
   });
 };
@@ -204,11 +205,11 @@ $('.addButton').on('click', function () {
   }
 
   hashMap.push({
-    logoType: 'text',
     url: url,
     briefIntroduction: briefIntroduction
   });
   render();
+  location.reload();
 });
 
 window.onbeforeunload = function () {
@@ -224,6 +225,11 @@ $(document).on('keypress', function (e) {
       window.open(hashMap[i].url);
     }
   }
+
+  location.reload();
+});
+$("img").on('error', function () {
+  $(this).attr('src', 'https://i.loli.net/2019/11/11/JfNTZXMB8hxQHlP.png');
 });
 },{}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -253,7 +259,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60270" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65037" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
