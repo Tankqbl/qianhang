@@ -8,4 +8,3 @@ parcel src/index.html
 ```
 yarn build
 ```
->>>>>>> dc1d331fd24e1d8ff74903cfd267fbebd42e294d
