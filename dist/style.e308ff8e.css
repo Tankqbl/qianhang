@@ -163,7 +163,7 @@ img{
 .siteList .addButton .icon {
     width: 64px;
     height: 64px;
-    margin-top:3px;
+    margin-top:10px;
 }
 .siteList .addButton .icon-wrapper{
     display: flex;
@@ -175,5 +175,6 @@ img{
     margin-top: 4px;
 }
       
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
